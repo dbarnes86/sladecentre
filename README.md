@@ -120,6 +120,29 @@ Replace `your-photo-name.jpg` with the actual filename of the photo you just upl
 
 ---
 
+## Moving the domain to GitHub Pages
+
+The site is set up to live at **www.thesladecentre.com** (see the `CNAME` file in this repo). To point the domain here instead of the old host, log in to wherever the domain's DNS is managed (e.g. the domain registrar or the old hosting provider's DNS panel) and set the following records:
+
+| Type | Host/Name | Value | Notes |
+|------|-----------|-------|-------|
+| CNAME | `www` | `dbarnes86.github.io` | Points www.thesladecentre.com at GitHub Pages |
+| A | `@` (root/apex) | `185.199.108.153` | GitHub Pages apex IP |
+| A | `@` (root/apex) | `185.199.109.153` | GitHub Pages apex IP |
+| A | `@` (root/apex) | `185.199.110.153` | GitHub Pages apex IP |
+| A | `@` (root/apex) | `185.199.111.153` | GitHub Pages apex IP |
+
+The four `A` records let `thesladecentre.com` (without the `www`) also work and redirect to `www.thesladecentre.com`.
+
+**Before switching:** remove or replace any existing `A`, `CNAME`, or `ALIAS` records for `@` and `www` from the old host — having both old and new records in place at once can cause the site to load inconsistently.
+
+**After updating DNS:**
+1. DNS changes can take anywhere from a few minutes to 24–48 hours to fully take effect
+2. In the GitHub repo, go to **Settings → Pages** and confirm the custom domain shows a green check and "DNS check successful"
+3. Tick **Enforce HTTPS** once it becomes available (it's greyed out until GitHub finishes issuing the certificate)
+
+---
+
 ## Something looks wrong — who do I ask?
 
 Contact Dan: [dan@kijo.io](mailto:dan@kijo.io)
