@@ -7,21 +7,20 @@
   <meta name="description" content="An arts centre and café in the heart of Gillingham, Dorset. Exhibitions, events, locally-made food and coffee.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #F7F4EF;
-      --bg-warm:   #EDE8DF;
-      --ink:       #1E1A14;
-      --ink-mid:   #5C5449;
-      --ink-light: #9B9186;
+      --bg:        #FFFFFF;
+      --bg-warm:   #F2F1EE;
+      --ink:       #111111;
+      --ink-mid:   #555555;
+      --ink-light: #8A8A8A;
       --rust:      #9C4A2A;
-      --rust-pale: #F2E8E2;
-      --serif:     'Playfair Display', Georgia, serif;
+      --line:      rgba(0,0,0,0.12);
       --sans:      'Inter', system-ui, sans-serif;
-      --max:       1120px;
+      --max:       1320px;
     }
 
     html { scroll-behavior: smooth; }
@@ -31,8 +30,17 @@
       background: var(--bg);
       color: var(--ink);
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 3rem;
     }
 
     /* ---- NAV ---- */
@@ -41,340 +49,196 @@
       top: 0;
       z-index: 100;
       background: var(--bg);
-      border-bottom: 1px solid rgba(30,26,20,0.12);
-      padding: 0 2rem;
+      border-bottom: 1px solid var(--line);
     }
 
     nav .nav-inner {
       max-width: var(--max);
       margin: 0 auto;
+      padding: 0 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
+      height: 84px;
       gap: 2rem;
     }
 
     nav .wordmark {
-      font-family: var(--serif);
+      font-weight: 700;
       font-size: 1.1rem;
-      color: var(--ink);
+      letter-spacing: -0.01em;
       text-decoration: none;
       white-space: nowrap;
-      letter-spacing: 0.02em;
-      margin-left: 2rem;
     }
 
     nav ul {
       display: flex;
       list-style: none;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
-    nav a {
-      font-size: 0.8125rem;
-      font-weight: 400;
+    nav a.nav-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    nav a.nav-link:hover { opacity: 0.5; }
+
+    /* ---- INTRO ---- */
+    .intro {
+      padding: 7rem 0 5rem;
+    }
+
+    .intro-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: var(--ink); }
-
-    /* ---- HERO ---- */
-    .hero {
-      background: var(--bg-warm);
-      padding: 5rem 2rem 4rem;
-      border-bottom: 1px solid rgba(30,26,20,0.1);
-    }
-
-    .hero-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: end;
-    }
-
-    .hero-headline {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 400;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-    }
-
-    .hero-headline em {
-      font-style: italic;
       color: var(--rust);
-    }
-
-    .hero-sub {
-      margin-top: 1.25rem;
-      font-size: 1rem;
-      color: var(--ink-mid);
-      max-width: 36ch;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      background: var(--ink);
-      color: #F7F4EF;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .hero-cta:hover { background: var(--rust); }
-
-    .hero-aside {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border-left: 1px solid rgba(30,26,20,0.15);
-      padding-left: 3rem;
-    }
-
-    .hero-aside-label {
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-aside-value {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      color: var(--ink);
-    }
-
-    .hero-aside-row {
-      padding: 1.25rem 0;
-      border-bottom: 1px solid rgba(30,26,20,0.1);
-    }
-
-    .hero-aside-row:first-child { padding-top: 0; }
-    .hero-aside-row:last-child { border-bottom: none; }
-
-    .hours-grid {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.15rem 1rem;
-      margin-top: 0.4rem;
-    }
-
-    .hours-day { font-size: 0.875rem; color: var(--ink-mid); }
-    .hours-time { font-size: 0.875rem; color: var(--ink); font-weight: 500; }
-    .hours-closed { font-size: 0.875rem; color: var(--ink-light); font-style: italic; }
-
-    /* ---- SECTION WRAPPER ---- */
-    section { padding: 5rem 2rem; }
-    section + section { border-top: 1px solid rgba(30,26,20,0.1); }
-
-    .section-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--rust);
-      margin-bottom: 1.5rem;
       display: block;
-    }
-
-    .section-heading {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--ink);
-    }
-
-    /* ---- FEATURED EXHIBITION ---- */
-
-    /* ===== FEATURED / CURRENT EXHIBITION — UPDATE THIS SECTION ===== */
-    .featured {
-      background: var(--bg);
-    }
-
-    .featured-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      margin-top: 3rem;
-    }
-
-    .featured-image-placeholder {
-      aspect-ratio: 4/3;
-      background: var(--bg-warm);
-      border: 1px solid rgba(30,26,20,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      color: var(--ink-light);
-      font-size: 0.875rem;
-    }
-
-    .featured-image-placeholder svg {
-      width: 40px;
-      height: 40px;
-      opacity: 0.35;
-    }
-
-    .featured-image-placeholder p {
-      font-size: 0.75rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .featured-image {
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      width: 100%;
-      display: block;
-    }
-
-    .featured-dates {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--rust);
-      padding: 0.3rem 0.75rem;
-      border: 1px solid var(--rust);
       margin-bottom: 1.25rem;
     }
 
-    .featured-title {
-      font-family: var(--serif);
-      font-size: 2.25rem;
-      font-weight: 400;
+    .intro-heading {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 700;
       line-height: 1.15;
-      color: var(--ink);
+      letter-spacing: -0.015em;
+      max-width: 18ch;
     }
 
-    .featured-artist {
-      font-family: var(--serif);
-      font-size: 1rem;
-      font-style: italic;
+    .intro-body {
+      margin-top: 1.5rem;
+      font-size: 1.125rem;
       color: var(--ink-mid);
-      margin-top: 0.25rem;
+      max-width: 48ch;
+      line-height: 1.6;
     }
 
-    .featured-desc {
+    .intro-links {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .intro-links a {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.15s, color 0.15s;
+    }
+
+    .intro-links a:hover { color: var(--rust); text-decoration-color: var(--rust); }
+
+    /* ---- SECTION WRAPPER ---- */
+    section { padding: 4.5rem 0; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .section-heading {
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    /* ---- EXHIBITION / EVENT ROWS ---- */
+    .exhibit-row {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 3.5rem;
+      align-items: start;
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .exhibit-row:nth-child(even) { direction: rtl; }
+    .exhibit-row:nth-child(even) > * { direction: ltr; }
+
+    .exhibit-image {
+      aspect-ratio: 4/3;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      background: var(--bg-warm);
+    }
+
+    .exhibit-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--rust);
+      display: block;
+      margin-bottom: 0.85rem;
+    }
+
+    .exhibit-title {
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .exhibit-artist {
+      font-size: 0.9375rem;
+      color: var(--ink-mid);
+      margin-top: 0.4rem;
+    }
+
+    .exhibit-desc {
       margin-top: 1.25rem;
       font-size: 0.9375rem;
       color: var(--ink-mid);
-      line-height: 1.75;
+      line-height: 1.65;
+      max-width: 60ch;
+    }
+
+    .exhibit-dates {
+      margin-top: 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ink);
     }
 
     .text-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      margin-top: 1.75rem;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink);
+      gap: 0.3rem;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
       text-decoration: none;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 0.15rem;
     }
 
-    .text-link:hover { color: var(--rust); border-color: var(--rust); }
-
-    /* ---- UPCOMING EVENTS ---- */
-
-    /* ===== UPCOMING EVENTS — ADD/REMOVE EVENT CARDS BELOW ===== */
-    .events { background: var(--bg-warm); }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .event-card {
-      background: var(--bg);
-      border: 1px solid rgba(30,26,20,0.1);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .event-type {
-      font-size: 0.625rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 0.75rem;
-    }
-
-    .event-title {
-      font-family: var(--serif);
-      font-size: 1.3rem;
-      font-weight: 400;
-      line-height: 1.25;
-      color: var(--ink);
-    }
-
-    .event-artist {
-      font-size: 0.875rem;
-      color: var(--ink-mid);
-      margin-top: 0.2rem;
-      font-style: italic;
-    }
-
-    .event-desc {
-      font-size: 0.875rem;
-      color: var(--ink-mid);
-      margin-top: 0.875rem;
-      line-height: 1.65;
-      flex: 1;
-    }
-
-    .event-dates {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 1.25rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(30,26,20,0.1);
-      font-size: 0.8125rem;
-      color: var(--ink-mid);
-    }
-
-    .event-dates strong { color: var(--ink); font-weight: 500; }
+    .text-link::after { content: '+'; font-weight: 600; }
+    .text-link:hover { color: var(--rust); }
 
     /* ---- CAFÉ ---- */
-
-    /* ===== CAFÉ SECTION — UPDATE MENU, SPECIALS, ETC ===== */
-    .cafe { background: var(--bg); }
+    .cafe { background: var(--bg-warm); }
 
     .cafe-grid {
       display: grid;
@@ -384,70 +248,59 @@
     }
 
     .cafe-intro {
-      font-size: 1.0625rem;
-      color: var(--ink-mid);
-      line-height: 1.8;
+      font-size: 1.1875rem;
+      font-weight: 500;
+      line-height: 1.55;
+      max-width: 36ch;
     }
 
-    .menu-group {
+    .specials {
       margin-top: 2rem;
     }
 
-    .menu-group + .menu-group { margin-top: 1.75rem; }
-
-    .menu-group-title {
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+    .specials-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--rust);
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(156,74,42,0.2);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .specials p {
+      font-size: 0.9375rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    .menu-group { margin-top: 1.75rem; }
+    .menu-group:first-child { margin-top: 0; }
+
+    .menu-group-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0.65rem;
     }
 
     .menu-item {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      padding: 0.4rem 0;
-      border-bottom: 1px dashed rgba(30,26,20,0.1);
-      font-size: 0.9rem;
+      padding: 0.45rem 0;
+      font-size: 0.9375rem;
     }
 
-    .menu-item:last-child { border-bottom: none; }
-    .menu-item-name { color: var(--ink); }
     .menu-item-note { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.1rem; }
 
-    .specials-box {
-      background: var(--rust-pale);
-      border-left: 3px solid var(--rust);
-      padding: 1.25rem 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .specials-box .specials-label {
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--rust);
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .specials-box p {
-      font-size: 0.9rem;
-      color: var(--ink-mid);
-      line-height: 1.6;
-    }
-
     /* ---- ABOUT ---- */
-    .about { background: var(--bg-warm); }
-
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 1fr;
       gap: 5rem;
       align-items: start;
       margin-top: 3rem;
@@ -456,39 +309,33 @@
     .about-body {
       font-size: 1rem;
       color: var(--ink-mid);
-      line-height: 1.85;
+      line-height: 1.7;
     }
 
     .about-body p + p { margin-top: 1rem; }
 
     .about-highlight {
-      font-family: var(--serif);
       font-size: 1.6rem;
-      font-style: italic;
-      line-height: 1.4;
-      color: var(--ink);
-      padding-left: 1.5rem;
-      border-left: 2px solid var(--rust);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin-bottom: 2.5rem;
     }
 
     .about-facts {
-      margin-top: 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      display: flex;
+      gap: 2rem;
     }
 
     .about-fact {
-      padding: 1.5rem;
-      background: var(--bg);
-      border: 1px solid rgba(30,26,20,0.08);
+      border-left: 1px solid var(--line);
+      padding-left: 1.25rem;
     }
 
     .about-fact-number {
-      font-family: var(--serif);
-      font-size: 2.5rem;
-      font-weight: 400;
-      color: var(--rust);
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       line-height: 1;
     }
 
@@ -499,136 +346,159 @@
     }
 
     /* ---- VISIT / CONTACT ---- */
-
-    /* ===== CONTACT & VISIT — UPDATE ADDRESS, PHONE, EMAIL HERE ===== */
-    .visit { background: var(--bg); }
-
     .visit-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.3fr;
       gap: 5rem;
       margin-top: 3rem;
     }
 
-    .contact-block + .contact-block { margin-top: 2rem; }
+    .contact-block + .contact-block { margin-top: 1.75rem; }
 
     .contact-block-label {
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--ink-light);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .contact-block-value {
-      font-size: 1rem;
-      color: var(--ink);
+      font-size: 1.0625rem;
       line-height: 1.6;
     }
 
     .contact-block-value a {
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(30,26,20,0.2);
-      transition: color 0.2s, border-color 0.2s;
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 2px;
+      transition: color 0.15s, text-decoration-color 0.15s;
     }
 
-    .contact-block-value a:hover {
-      color: var(--rust);
-      border-color: var(--rust);
+    .contact-block-value a:hover { color: var(--rust); text-decoration-color: var(--rust); }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1.5rem;
     }
+
+    .hours-day { font-size: 0.9375rem; color: var(--ink-mid); }
+    .hours-time { font-size: 0.9375rem; font-weight: 600; }
+    .hours-closed { font-size: 0.9375rem; color: var(--ink-light); }
 
     .social-links {
       display: flex;
-      gap: 1rem;
-      margin-top: 0.75rem;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
     }
 
     .social-links a {
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink-mid);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(30,26,20,0.2);
-      padding-bottom: 0.1rem;
-      transition: color 0.2s;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      transition: color 0.15s, text-decoration-color 0.15s;
     }
 
-    .social-links a:hover { color: var(--rust); border-color: var(--rust); }
+    .social-links a:hover { color: var(--rust); text-decoration-color: var(--rust); }
 
     .map-embed {
       width: 100%;
-      height: 360px;
+      height: 420px;
       border: 0;
-      filter: grayscale(25%);
+      filter: grayscale(35%);
+    }
+
+    .map-caption {
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--ink-light);
     }
 
     /* ---- FOOTER ---- */
     footer {
       background: var(--ink);
-      color: rgba(247,244,239,0.55);
-      padding: 2.5rem 2rem;
+      color: rgba(255,255,255,0.65);
+      padding: 4.5rem 0 0;
     }
 
-    footer .footer-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3.5rem;
     }
 
-    footer .footer-mark {
-      font-family: var(--serif);
-      font-size: 1rem;
-      color: rgba(247,244,239,0.85);
-    }
-
-    footer .footer-note {
+    .footer-col-title {
       font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.1rem;
     }
 
-    footer a {
-      color: rgba(247,244,239,0.55);
+    .footer-mark {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.85rem;
+      display: block;
+    }
+
+    footer p, footer .footer-link-list { font-size: 0.9rem; line-height: 1.7; }
+
+    .footer-link-list { list-style: none; }
+
+    footer a { text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.8125rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom .social-links a {
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
+      font-weight: 600;
+      font-size: 0.8125rem;
     }
 
-    footer a:hover { color: rgba(247,244,239,0.9); }
+    .footer-bottom .social-links a:hover { color: #fff; }
 
     /* ---- RESPONSIVE ---- */
-    @media (max-width: 800px) {
-      .hero-inner, .featured-grid, .cafe-grid, .about-grid, .visit-grid {
+    @media (max-width: 900px) {
+      .exhibit-row {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+      .exhibit-row, .exhibit-row:nth-child(even) { direction: ltr; }
+
+      .cafe-grid, .about-grid, .visit-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
 
-      .hero-aside {
-        border-left: none;
-        border-top: 1px solid rgba(30,26,20,0.15);
-        padding-left: 0;
-        padding-top: 2rem;
-      }
-
-      .hero { padding: 3rem 1.25rem 3rem; }
-      section { padding: 3.5rem 1.25rem; }
-      nav { padding: 0 1.25rem; }
-
-      nav ul { gap: 1.25rem; }
-
-      .about-facts { grid-template-columns: 1fr 1fr; }
-
-      .events-grid { grid-template-columns: 1fr; }
-
-      footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 640px) {
+      .wrap, nav .nav-inner, .footer-grid, footer .wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+      nav .nav-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .intro { padding: 4rem 0 3rem; }
+      section { padding: 3rem 0; }
       nav ul { display: none; }
-      .about-facts { grid-template-columns: 1fr; }
+      .about-facts { flex-wrap: wrap; row-gap: 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -639,170 +509,126 @@
     <div class="nav-inner">
       <a href="#" class="wordmark">The Slade Building</a>
       <ul>
-        <li><a href="#whats-on">What's on</a></li>
-        <li><a href="#cafe">Café</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#visit">Visit</a></li>
+        <li><a href="#whats-on" class="nav-link">What's on</a></li>
+        <li><a href="#cafe" class="nav-link">Café</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#visit" class="nav-link">Visit</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- ---- HERO ---- -->
-  <div class="hero">
-    <div class="hero-inner">
-      <div>
-        <h1 class="hero-headline">Art, coffee<br>&amp; <em>community</em><br>in Dorset</h1>
-        <p class="hero-sub">An independent arts centre and café in the heart of Gillingham. Come for the exhibitions, stay for the cake.</p>
-        <a href="#whats-on" class="hero-cta">See what's on →</a>
-      </div>
-
-      <div class="hero-aside">
-        <!-- ===== OPENING HOURS — UPDATE AS NEEDED ===== -->
-        <div class="hero-aside-row">
-          <div class="hero-aside-label">Opening hours</div>
-          <div class="hours-grid">
-            <span class="hours-day">Tue – Fri</span>
-            <span class="hours-time">9:30am – 3:00pm</span>
-            <span class="hours-day">Saturday</span>
-            <span class="hours-time">9:30am – 2:00pm</span>
-            <span class="hours-day">Sun &amp; Mon</span>
-            <span class="hours-closed">Closed</span>
-          </div>
-        </div>
-
-        <!-- ===== ADDRESS — UPDATE IF NEEDED ===== -->
-        <div class="hero-aside-row">
-          <div class="hero-aside-label">Find us</div>
-          <div class="hero-aside-value">The Square<br>Gillingham, Dorset<br>SP8 4AY</div>
-        </div>
-
-        <div class="hero-aside-row">
-          <div class="hero-aside-label">Get in touch</div>
-          <div class="hero-aside-value">
-            <a href="tel:07775431652" style="color:inherit;text-decoration:none;">07775 431652</a>
-          </div>
-        </div>
+  <!-- ---- INTRO ---- -->
+  <div class="wrap">
+    <div class="intro">
+      <span class="intro-eyebrow">Gillingham, Dorset</span>
+      <h1 class="intro-heading">An independent arts centre and café</h1>
+      <p class="intro-body">
+        Free exhibitions, a changing programme of events and a café at the
+        heart of the market square. Come for the art, stay for the cake.
+      </p>
+      <div class="intro-links">
+        <a href="#whats-on">What's on</a>
+        <a href="#cafe">Café</a>
+        <a href="#visit">Visit us</a>
       </div>
     </div>
   </div>
 
+  <!-- ---- EXHIBITIONS & EVENTS ---- -->
+  <!-- ===== ALL EXHIBITIONS & EVENTS — EDIT EACH .exhibit-row BELOW. THE FIRST ROW IS THE CURRENT EXHIBITION. ===== -->
+  <section id="whats-on">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-heading">Exhibitions &amp; events</h2>
+        <span class="section-label">Free entry</span>
+      </div>
 
-  <!-- ---- FEATURED EXHIBITION ---- -->
-  <!-- ===== CURRENT EXHIBITION — EDIT TITLE, ARTIST, DATES, DESCRIPTION BELOW ===== -->
-  <section class="featured" id="whats-on">
-    <div class="section-inner">
-      <span class="section-label">Now showing</span>
-      <h2 class="section-heading">Current exhibition</h2>
-
-      <div class="featured-grid">
-
-        <!-- IMAGE: Replace the placeholder below with an <img> tag when you have a photo
-             e.g. <img src="images/exhibition-name.jpg" alt="Description" class="featured-image"> -->
-        <div class="featured-image-placeholder">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          <p>Add exhibition image</p>
-        </div>
-
+      <!-- ROW 1: CURRENT EXHIBITION — update title, artist, dates, description, image -->
+      <article class="exhibit-row">
+        <!-- IMAGE: replace with your own photo when available -->
+        <img src="images/dorset-art-weeks.jpg" alt="Gallery interior with paintings on display" class="exhibit-image">
         <div>
-          <!-- DATES: Update to current exhibition dates -->
-          <div class="featured-dates">23 May – 20 June 2026</div>
-
-          <!-- TITLE: Update to current exhibition name -->
-          <h3 class="featured-title">Dorset Art Weeks 2026</h3>
-
-          <!-- ARTIST: Update or remove this line if it's a group show -->
-          <p class="featured-artist">Group exhibition</p>
-
-          <!-- DESCRIPTION: Write a 2–3 sentence description of the exhibition -->
-          <p class="featured-desc">
+          <span class="exhibit-tag">Now showing</span>
+          <h3 class="exhibit-title">Dorset Art Weeks 2026</h3>
+          <p class="exhibit-artist">Group exhibition</p>
+          <p class="exhibit-desc">
             Our annual showcase during Dorset Art Weeks, bringing together a
             selection of local and regional artists working across painting,
             print, ceramics and sculpture. Entry is free — all are welcome.
           </p>
-
-          <a href="mailto:mail@thesladecentre.com" class="text-link">Enquire about the exhibition →</a>
+          <div class="exhibit-dates">23 May – 20 June 2026</div>
+          <a href="mailto:mail@thesladecentre.com" class="text-link">Read more</a>
         </div>
-      </div>
-    </div>
-  </section>
+      </article>
 
-
-  <!-- ---- UPCOMING EVENTS ---- -->
-  <!-- ===== UPCOMING EVENTS — ADD, REMOVE OR EDIT CARDS BELOW =====
-       To add a new event: copy one .event-card block and paste it inside .events-grid
-       To remove an event: delete the entire .event-card block
-  ===== -->
-  <section class="events">
-    <div class="section-inner">
-      <span class="section-label">Coming up</span>
-      <h2 class="section-heading">Upcoming exhibitions &amp; events</h2>
-
-      <div class="events-grid">
-
-        <!-- EVENT CARD 1 -->
-        <article class="event-card">
-          <div class="event-type">Exhibition</div>
-          <h3 class="event-title">Landscape: An Alternative View</h3>
-          <p class="event-artist">Selected artists</p>
-          <p class="event-desc">
+      <!-- ROW 2: ADD, REMOVE OR EDIT — copy this whole <article class="exhibit-row"> block to add another -->
+      <article class="exhibit-row">
+        <img src="images/landscape-exhibition.jpg" alt="Landscape oil painting" class="exhibit-image">
+        <div>
+          <span class="exhibit-tag">Upcoming exhibition</span>
+          <h3 class="exhibit-title">Landscape: An Alternative View</h3>
+          <p class="exhibit-artist">Selected artists</p>
+          <p class="exhibit-desc">
             A fresh perspective on the British landscape through a range of media,
             from expressive oil paintings to delicate etchings and textile work.
           </p>
-          <div class="event-dates">
-            <strong>11 Apr – 9 May 2026</strong>
-          </div>
-        </article>
+          <div class="exhibit-dates">11 Apr – 9 May 2026</div>
+          <a href="mailto:mail@thesladecentre.com" class="text-link">Read more</a>
+        </div>
+      </article>
 
-        <!-- EVENT CARD 2 -->
-        <article class="event-card">
-          <div class="event-type">Exhibition</div>
-          <h3 class="event-title">Jonny Hannah: The Darktown Department Store</h3>
-          <p class="event-artist">Jonny Hannah</p>
-          <p class="event-desc">
+      <article class="exhibit-row">
+        <img src="images/jonny-hannah.jpg" alt="Letterpress print artwork" class="exhibit-image">
+        <div>
+          <span class="exhibit-tag">Upcoming exhibition</span>
+          <h3 class="exhibit-title">Jonny Hannah: The Darktown Department Store</h3>
+          <p class="exhibit-artist">Jonny Hannah</p>
+          <p class="exhibit-desc">
             A vivid and playful world of illustration, letterpress and folk art from
             one of Britain's most distinctive printmakers and storytellers.
           </p>
-          <div class="event-dates">
-            <strong>Dates TBC — enquire for details</strong>
-          </div>
-        </article>
+          <div class="exhibit-dates">Dates TBC — enquire for details</div>
+          <a href="mailto:mail@thesladecentre.com" class="text-link">Read more</a>
+        </div>
+      </article>
 
-        <!-- EVENT CARD 3: Add another event here, or delete this card -->
-        <article class="event-card">
-          <div class="event-type">Open Print Exhibition</div>
-          <h3 class="event-title">Annual Open Print Exhibition</h3>
-          <p class="event-artist">Open to all artists</p>
-          <p class="event-desc">
+      <article class="exhibit-row">
+        <img src="images/open-print-exhibition.jpg" alt="Letterpress printing workshop" class="exhibit-image">
+        <div>
+          <span class="exhibit-tag">Upcoming exhibition</span>
+          <h3 class="exhibit-title">Annual Open Print Exhibition</h3>
+          <p class="exhibit-artist">Open to all artists</p>
+          <p class="exhibit-desc">
             Our annual celebration of printmaking in all its forms. Work is
             available to purchase and all proceeds support the gallery.
           </p>
-          <div class="event-dates">
-            <strong>Dates TBC — enquire for details</strong>
-          </div>
-        </article>
+          <div class="exhibit-dates">Dates TBC — enquire for details</div>
+          <a href="mailto:mail@thesladecentre.com" class="text-link">Read more</a>
+        </div>
+      </article>
 
-      </div>
     </div>
   </section>
-
 
   <!-- ---- CAFÉ ---- -->
   <!-- ===== CAFÉ SECTION — UPDATE MENU ITEMS, SPECIALS AND DESCRIPTION ===== -->
   <section class="cafe" id="cafe">
-    <div class="section-inner">
-      <span class="section-label">Café</span>
-      <h2 class="section-heading">Good coffee, homemade cake<br>&amp; a reason to linger</h2>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-heading">Café</h2>
+        <span class="section-label">Open Tue–Sat</span>
+      </div>
 
       <div class="cafe-grid">
         <div>
           <p class="cafe-intro">
-            Our café is at the heart of everything we do. Coffee is sourced from a local
-            roaster, cakes are made by hand and everything on the menu is chosen with
-            care. Browse the gallery, pick up a book, or simply sit and enjoy the square.
+            Good coffee, homemade cake, and a reason to linger. Our café is at
+            the heart of everything we do — sourced from a local roaster, baked
+            by hand, and chosen with care.
           </p>
 
           <!-- SPECIALS: Update this regularly — weekly or seasonal specials -->
-          <div class="specials-box">
+          <div class="specials">
             <span class="specials-label">This week's specials</span>
             <p>Apricot oat slice · Lemon drizzle · Seasonal fruit tart<br>
             Ask at the counter for today's soup and sandwich.</p>
@@ -813,56 +639,61 @@
           <!-- MENU: Edit item names and prices as needed -->
           <div class="menu-group">
             <div class="menu-group-title">Coffee &amp; drinks</div>
-            <div class="menu-item">
-              <span class="menu-item-name">Espresso / Americano</span>
-            </div>
-            <div class="menu-item">
-              <span class="menu-item-name">Flat white / Latte / Cappuccino</span>
-            </div>
-            <div class="menu-item">
-              <span class="menu-item-name">Tea — a range of varieties</span>
-            </div>
-            <div class="menu-item">
-              <span class="menu-item-name">Cold drinks &amp; juice</span>
-            </div>
+            <div class="menu-item"><span class="menu-item-name">Espresso / Americano</span></div>
+            <div class="menu-item"><span class="menu-item-name">Flat white / Latte / Cappuccino</span></div>
+            <div class="menu-item"><span class="menu-item-name">Tea — a range of varieties</span></div>
+            <div class="menu-item"><span class="menu-item-name">Cold drinks &amp; juice</span></div>
           </div>
 
           <div class="menu-group">
             <div class="menu-group-title">Cakes &amp; bakes</div>
-            <div class="menu-item">
-              <span class="menu-item-name">Rotating homemade cakes</span>
-            </div>
-            <div class="menu-item">
-              <span class="menu-item-name">Flapjacks &amp; traybakes</span>
-            </div>
-            <div class="menu-item">
-              <span class="menu-item-name">Scones with jam &amp; cream</span>
-            </div>
+            <div class="menu-item"><span class="menu-item-name">Rotating homemade cakes</span></div>
+            <div class="menu-item"><span class="menu-item-name">Flapjacks &amp; traybakes</span></div>
+            <div class="menu-item"><span class="menu-item-name">Scones with jam &amp; cream</span></div>
           </div>
 
           <div class="menu-group">
             <div class="menu-group-title">Light lunch</div>
-            <div class="menu-item">
-              <span class="menu-item-name">Soups — made fresh daily</span>
-            </div>
-            <div class="menu-item">
-              <span class="menu-item-name">Sandwiches &amp; wraps</span>
-            </div>
+            <div class="menu-item"><span class="menu-item-name">Soups — made fresh daily</span></div>
+            <div class="menu-item"><span class="menu-item-name">Sandwiches &amp; wraps</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
   <!-- ---- ABOUT ---- -->
   <!-- ===== ABOUT SECTION — UPDATE DESCRIPTION AND FACTS ===== -->
-  <section class="about" id="about">
-    <div class="section-inner">
-      <span class="section-label">About</span>
-      <h2 class="section-heading">A place for art<br>in North Dorset</h2>
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-heading">About</h2>
+        <span class="section-label">North Dorset</span>
+      </div>
 
       <div class="about-grid">
+        <div>
+          <p class="about-highlight">
+            North Dorset's premier independent arts centre — free to visit, welcoming to all.
+          </p>
+
+          <div class="about-facts">
+            <!-- STATS: Update these numbers as they change -->
+            <div class="about-fact">
+              <div class="about-fact-number">10+</div>
+              <div class="about-fact-label">exhibitions per year</div>
+            </div>
+            <div class="about-fact">
+              <div class="about-fact-number">Free</div>
+              <div class="about-fact-label">entry, always</div>
+            </div>
+            <div class="about-fact">
+              <div class="about-fact-number">2023</div>
+              <div class="about-fact-label">opened our doors</div>
+            </div>
+          </div>
+        </div>
+
         <div class="about-body">
           <p>
             The Slade Building sits at the centre of Gillingham's market square —
@@ -873,54 +704,27 @@
           <p>
             We're proudly independent, volunteer-supported and entirely community-run.
             Our programme of exhibitions changes throughout the year, bringing new
-            artists and new work to North Dorset. Entry to all exhibitions is free.
+            artists and new work to North Dorset.
           </p>
           <p>
             We also sell art books, locally made greeting cards and small prints.
-            Sign up to our newsletter to hear about upcoming shows.
           </p>
-
-          <a href="mailto:mail@thesladecentre.com?subject=Newsletter signup" class="text-link" style="margin-top:1.5rem;">
-            Join the mailing list →
+          <a href="mailto:mail@thesladecentre.com?subject=Newsletter signup" class="text-link" style="margin-top:0.75rem;">
+            Join the mailing list
           </a>
-        </div>
-
-        <div>
-          <blockquote class="about-highlight">
-            "North Dorset's premier independent arts centre — free to visit, welcoming to all."
-          </blockquote>
-
-          <!-- STATS: Update these numbers as they change -->
-          <div class="about-facts">
-            <div class="about-fact">
-              <div class="about-fact-number">10+</div>
-              <div class="about-fact-label">exhibitions per year</div>
-            </div>
-            <div class="about-fact">
-              <div class="about-fact-number">Free</div>
-              <div class="about-fact-label">entry, always</div>
-            </div>
-            <div class="about-fact">
-              <div class="about-fact-number">Tue–Sat</div>
-              <div class="about-fact-label">open most of the week</div>
-            </div>
-            <div class="about-fact">
-              <div class="about-fact-number">2023</div>
-              <div class="about-fact-label">opened our doors</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-
   <!-- ---- VISIT / CONTACT ---- -->
-  <!-- ===== CONTACT DETAILS — UPDATE PHONE, EMAIL, SOCIAL LINKS ===== -->
-  <section class="visit" id="visit">
-    <div class="section-inner">
-      <span class="section-label">Visit us</span>
-      <h2 class="section-heading">Come and find us</h2>
+  <!-- ===== CONTACT DETAILS — UPDATE ADDRESS, PHONE, EMAIL HERE ===== -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-heading">Visit us</h2>
+        <span class="section-label">The Square, SP8 4AY</span>
+      </div>
 
       <div class="visit-grid">
         <div>
@@ -936,15 +740,23 @@
 
           <div class="contact-block">
             <div class="contact-block-label">Telephone</div>
-            <div class="contact-block-value">
-              <a href="tel:07775431652">07775 431652</a>
-            </div>
+            <div class="contact-block-value"><a href="tel:07775431652">07775 431652</a></div>
           </div>
 
           <div class="contact-block">
             <div class="contact-block-label">Email</div>
-            <div class="contact-block-value">
-              <a href="mailto:mail@thesladecentre.com">mail@thesladecentre.com</a>
+            <div class="contact-block-value"><a href="mailto:mail@thesladecentre.com">mail@thesladecentre.com</a></div>
+          </div>
+
+          <div class="contact-block">
+            <div class="contact-block-label">Opening hours</div>
+            <div class="hours-grid" style="margin-top:0.4rem;">
+              <span class="hours-day">Tuesday</span>   <span class="hours-time">9:30am – 3:00pm</span>
+              <span class="hours-day">Wednesday</span> <span class="hours-time">9:30am – 3:00pm</span>
+              <span class="hours-day">Thursday</span>  <span class="hours-closed">Closed</span>
+              <span class="hours-day">Friday</span>    <span class="hours-time">9:30am – 3:00pm</span>
+              <span class="hours-day">Saturday</span>  <span class="hours-time">9:30am – 2:00pm</span>
+              <span class="hours-day">Sun &amp; Mon</span>  <span class="hours-closed">Closed</span>
             </div>
           </div>
 
@@ -953,18 +765,6 @@
             <div class="social-links">
               <a href="https://facebook.com/sladecentre" target="_blank" rel="noopener">Facebook</a>
               <a href="https://instagram.com/thesladecentre" target="_blank" rel="noopener">Instagram</a>
-            </div>
-          </div>
-
-          <div class="contact-block" style="margin-top:2.5rem;">
-            <div class="contact-block-label">Opening hours</div>
-            <div class="hours-grid" style="margin-top:0.5rem;">
-              <span class="hours-day">Tuesday</span>   <span class="hours-time">9:30am – 3:00pm</span>
-              <span class="hours-day">Wednesday</span> <span class="hours-time">9:30am – 3:00pm</span>
-              <span class="hours-day">Thursday</span>  <span class="hours-closed">Closed</span>
-              <span class="hours-day">Friday</span>    <span class="hours-time">9:30am – 3:00pm</span>
-              <span class="hours-day">Saturday</span>  <span class="hours-time">9:30am – 2:00pm</span>
-              <span class="hours-day">Sun &amp; Mon</span>  <span class="hours-closed">Closed</span>
             </div>
           </div>
         </div>
@@ -979,22 +779,54 @@
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2506.6!2d-2.2756!3d51.0335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48726d0!2sThe+Square%2C+Gillingham%2C+Dorset+SP8+4AY!5e0!3m2!1sen!2suk!4v1"
             title="Map showing The Slade Building, The Square, Gillingham, Dorset">
           </iframe>
-          <p style="margin-top:0.75rem; font-size:0.8125rem; color:var(--ink-light);">
-            We're on the main square in Gillingham town centre. Free parking is available nearby.
-          </p>
+          <p class="map-caption">We're on the main square in Gillingham town centre. Free parking is available nearby.</p>
         </div>
       </div>
     </div>
   </section>
 
-
   <!-- ---- FOOTER ---- -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-mark">The Slade Building</div>
-      <div class="footer-note">
-        The Square · Gillingham · Dorset · SP8 4AY ·
-        <a href="mailto:mail@thesladecentre.com">mail@thesladecentre.com</a>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <span class="footer-mark">The Slade Building</span>
+          <p>An independent arts centre and café in the heart of Gillingham, Dorset.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Visit</div>
+          <ul class="footer-link-list">
+            <li>The Square, Gillingham</li>
+            <li>Dorset, SP8 4AY</li>
+            <li><a href="#visit">Opening hours</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Explore</div>
+          <ul class="footer-link-list">
+            <li><a href="#whats-on">What's on</a></li>
+            <li><a href="#cafe">Café</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Get in touch</div>
+          <ul class="footer-link-list">
+            <li><a href="tel:07775431652">07775 431652</a></li>
+            <li><a href="mailto:mail@thesladecentre.com">mail@thesladecentre.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 The Slade Building. All rights reserved.</span>
+        <div class="social-links">
+          <a href="https://facebook.com/sladecentre" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/thesladecentre" target="_blank" rel="noopener">Instagram</a>
+        </div>
       </div>
     </div>
   </footer>
